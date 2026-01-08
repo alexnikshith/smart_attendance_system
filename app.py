@@ -234,6 +234,7 @@ import sqlite3
 from utils.qr_generator import generate_qr
 from datetime import date, datetime
 import json
+import os
 
 app = Flask(__name__)
 app.secret_key = "smart_attendance_secret"
@@ -496,5 +497,8 @@ def logout():
 # =========================
 if __name__ == "__main__":
     # app.run(host="127.0.0.1", port=5000, debug=False)
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+
 
