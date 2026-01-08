@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="faculty-bg">
+
+<div class="fullscreen-container">
+    <div class="dashboard-card">
+        <h2>Faculty Dashboard</h2>
+        <p class="subtitle">Manage attendance sessions</p>
+
+        <div class="action-grid">
+            <a href="/generate_qr" class="action-card purple">
+                <h3>📌 Generate QR</h3>
+                <p>Create attendance QR for today</p>
+            </a>
+
+            <a href="/view_attendance" class="action-card orange">
+                <h3>📋 View Attendance</h3>
+                <p>Check student attendance records</p>
+            </a>
+        </div>
+
+        {% if qr %}
+        <div class="qr-box">
+            <h3>Scan this QR Code</h3>
+            <img src="{{ url_for('static', filename='qr.png') }}">
+        </div>
+        {% endif %}
+
+        <a href="/logout" class="logout-link">Logout</a>
+    </div>
+</div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="faculty-bg">
+
+<div class="fullscreen-container">
+    <div class="dashboard-card">
+        <h2>Faculty Dashboard</h2>
+        <p class="subtitle">Manage class attendance</p>
+
+        <div class="action-grid">
+
+            <!-- Generate QR -->
+            <a href="/generate_qr" class="action-card green">
+                <h3>📌 Generate QR</h3>
+                <p>Create QR for today’s class</p>
+            </a>
+
+            <!-- View Attendance Table -->
+            <a href="/view_attendance" class="action-card purple">
+                <h3>📋 View Attendance</h3>
+                <p>See student records</p>
+            </a>
+
+        </div>
+
+        {% if qr %}
+        <div class="qr-box">
+            <h3>Scan this QR Code</h3>
+            <img src="{{ url_for('static', filename='qr.png') }}" alt="QR Code">
+        </div>
+{% endif %}
+
+
+        <a href="/logout" class="logout-link">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>

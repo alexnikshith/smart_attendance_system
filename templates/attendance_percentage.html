@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="attendance-bg">
+
+<div class="attendance-container">
+    <h1 class="attendance-title">Your Attendance Overview</h1>
+
+    <div class="attendance-cards">
+        <div class="attendance-card purple">
+            <h1>{{ attended }}</h1>
+            <p>Classes Attended</p>
+        </div>
+
+        <div class="attendance-card teal">
+            <h1>{{ total }}</h1>
+            <p>Total Classes</p>
+        </div>
+
+        <div class="attendance-card yellow">
+            <h1>{{ percentage }}%</h1>
+            <p>Attendance %</p>
+        </div>
+    </div>
+
+    <a href="/student" class="btn-back">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Overview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="attendance-bg">
+
+<div class="attendance-wrapper">
+    <div class="attendance-card-main">
+        <h1 class="page-title">Your Attendance Overview</h1>
+
+        <div class="attendance-grid">
+            <div class="stat-card purple">
+                <h2>{{ attended }}</h2>
+                <p>Classes Attended</p>
+            </div>
+
+            <div class="stat-card teal">
+                <h2>{{ total }}</h2>
+                <p>Total Classes</p>
+            </div>
+
+            <div class="stat-card yellow percent-card">
+                <h2>{{ "%.2f"|format(percentage) }}%</h2>
+                <p>Attendance %</p>
+            </div>
+        </div>
+
+        <a href="/student" class="btn-back">← Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html> -->

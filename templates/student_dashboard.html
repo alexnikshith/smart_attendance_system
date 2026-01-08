@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="student-bg">
+
+<div class="fullscreen-container">
+    <div class="dashboard-card">
+        <h2>Student Dashboard</h2>
+        <p class="subtitle">Manage your attendance</p>
+
+        <div class="action-grid">
+
+            <!-- Scan QR -->
+            <a href="/scan_qr" class="action-card green">
+                <h3>📷 Scan QR</h3>
+                <p>Mark today’s attendance</p>
+            </a>
+
+            <!-- View Attendance Percentage -->
+            <a href="/attendance_percentage" class="action-card blue">
+                <h3>📊 Attendance %</h3>
+                <p>View your attendance</p>
+            </a>
+
+        </div>
+
+        <a href="/logout" class="logout-link">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>
