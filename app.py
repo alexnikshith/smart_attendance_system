@@ -234,7 +234,6 @@ import sqlite3
 from utils.qr_generator import generate_qr
 from datetime import date, datetime
 import json
-import os
 
 app = Flask(__name__)
 app.secret_key = "smart_attendance_secret"
@@ -398,6 +397,7 @@ def attendance_percentage():
     conn = get_db()
     cursor = conn.cursor()
 
+    # Classes attended by student
     cursor.execute("""
         SELECT COUNT(DISTINCT session_id)
         FROM attendance
@@ -405,14 +405,18 @@ def attendance_percentage():
     """, (student_id,))
     attended = cursor.fetchone()[0]
 
-    cursor.execute("SELECT COUNT(*) FROM sessions")
+    # Total classes conducted (sessions)
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM sessions
+    """)
     total = cursor.fetchone()[0]
 
     conn.close()
 
     percentage = 0
     if total > 0:
-        percentage = round(min((attended / total) * 100, 100), 2)
+        percentage = round((attended / total) * 100, 2)
 
     return render_template(
         "attendance_percentage.html",
@@ -420,6 +424,7 @@ def attendance_percentage():
         total=total,
         percentage=percentage
     )
+
 
 
 # =========================
@@ -434,14 +439,13 @@ def view_attendance():
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT users.name,
-               sessions.session_date,
-               attendance.status
-        FROM attendance
-        JOIN users ON users.id = attendance.student_id
-        JOIN sessions ON sessions.id = attendance.session_id
-        ORDER BY sessions.session_date DESC
-    """)
+        SELECT u.name, s.session_date, a.status
+        FROM attendance a
+        JOIN users u ON u.id = a.student_id
+        JOIN sessions s ON s.id = a.session_id
+        WHERE s.faculty_id = ?
+        ORDER BY s.session_date DESC
+    """, (session["user_id"],))
 
     records = cursor.fetchall()
     conn.close()
@@ -497,8 +501,4 @@ def logout():
 # =========================
 if __name__ == "__main__":
     # app.run(host="127.0.0.1", port=5000, debug=False)
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
-
-
+    app.run()
