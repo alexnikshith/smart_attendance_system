@@ -31,4 +31,29 @@ A web-based **Smart Attendance Management System** built using **Flask (Python)*
 ---
 
 ## 📂 Project Structure
+smart_attendance_system/
+│
+├── app.py
+├── database/
+│ └── attendance.db
+│
+├── templates/
+│ ├── login.html
+│ ├── register.html
+│ ├── student_dashboard.html
+│ ├── faculty_dashboard.html
+│ ├── scan_qr.html
+│ ├── attendance_percentage.html
+│ ├── attendance_success.html
+│ ├── attendance_exists.html
+│ └── view_attendance.html
+│
+├── static/
+│ └── css/
+│ └── style.css
+│
+├── utils/
+│ └── qr_generator.py
+│
+└── README.md
 
